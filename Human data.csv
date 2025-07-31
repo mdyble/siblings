@@ -1,0 +1,107 @@
+Society,Cat,Full,PaternalHalf,MaternalHalf,Total,Source    
+SA,aDNA,23,6,0,29,Blocher
+HN,aDNA,6,12,5,23,Fowler
+RK,aDNA,75,66,24,165,Gnecchi-Ruscone
+LE,aDNA,18,5,0,23,Penske
+GU,aDNA,44,0,0,44,Rivollat
+MO,aDNA,206,55,33,294,Wang
+LE,aDNA,58,15,17,90,Wang
+KFJ,aDNA,25,25,11,61,Gnecchi-Ruscone
+CA,aDNA,13,1,2,16,Yuncu
+Watchi,Agricultural,11073,7691,1661,20425,KinSources
+Melombo    ,Agricultural,94,78,1,173,KinSources    
+Obidos    ,Agricultural,1818,691,718,3227,KinSources    
+Pul    Eliya    ,Agricultural,22,7,5,34,KinSources    
+Torshan    ,Agricultural,1824,570,208,2602,KinSources    
+Tory    ,Agricultural,108,9,19,136,KinSources    
+Bwa,Agricultural,29443,16067,2769,48279,KinSourcesPost2016
+Dogon,Agricultural,22016,16414,4358,42788,KinSourcesPost2016
+Jie,Agricultural,86,44,0,130,KinSourcesPost2016
+Mebengokre (Kayapo),Agricultural,1846,430,235,2511,KinSourcesPost2016
+Ache    ,HG,677,394,311,1382,Hill    et    al.    2011    
+Agta    ,HG,33,15,12,60,Hill    et    al.    2011    
+Aka    ,HG,28,16,22,66,Hill    et    al.    2011    
+Hadza    ,HG,154,80,66,300,Hill    et    al.    2011    
+Hiwi    ,HG,104,30,9,143,Hill    et    al.    2011    
+!Kung    ,HG,118,53,8,179,KinSources    
+Ainu    ,HG,85,0,4,89,KinSources    
+Alyawarra    ,HG,164,75,9,248,KinSources    
+Angmagsalik    ,HG,15,5,0,20,KinSources    
+Apache    ,HG,212,90,12,314,KinSources    
+Belcher    Island    ,HG,20,0,0,20,KinSources    
+Chenchu    ,HG,253,83,57,393,KinSources    
+Copper    ,HG,86,1,4,91,KinSources    
+Dogrib    ,HG,109,5,9,123,KinSources    
+Eyak    ,HG,41,11,14,66,KinSources    
+Hare    ,HG,13,0,0,13,KinSources    
+Iglulik    ,HG,188,81,60,329,KinSources    
+Kutchin    ,HG,17,2,0,19,KinSources    
+Labrador    ,HG,39,24,1,64,KinSources    
+Mbuti    ,HG,410,117,66,593,KinSources    
+Miwuyt    ,HG,19,9,0,28,KinSources    
+Netsilik    ,HG,170,16,12,198,KinSources    
+Nunamuit    ,HG,206,111,36,353,KinSources    
+Nyungar    ,HG,218,23,39,280,KinSources    
+Ojibwa    ,HG,367,112,179,658,KinSources    
+Omaha    ,HG,437,154,33,624,KinSources    
+Oodnadatta    ,HG,20,6,10,36,KinSources    
+Paiute    ,HG,43,3,0,46,KinSources    
+Saami    Lapps    ,HG,227,140,101,468,KinSources    
+Semang    ,HG,20,11,0,31,KinSources    
+Shoshone    ,HG,98,28,48,174,KinSources    
+Slavey    ,HG,37,9,8,54,KinSources    
+Takamiut    ,HG,26,1,0,27,KinSources    
+Vedda    ,HG,15,1,2,18,KinSources    
+Wanindiljaugwa    ,HG,93,130,58,281,KinSources    
+Wilcania    ,HG,135,19,22,176,KinSources    
+Yaraldi    ,HG,288,54,59,401,KinSources    
+Kodiak,HG,806,39,262,1107,KinSourcesPost2016
+Mowanjum,HG,82,1,1,84,KinSourcesPost2016
+Murriny-Patha,HG,46,23,3,72,KinSourcesPost2016
+Nucoorilma (Tingha),HG,1613,94,49,1756,KinSourcesPost2016
+Nunivak,HG,806,211,199,1216,KinSourcesPost2016
+Sarmi,HG,229,170,36,435,KinSourcesPost2016
+Tiwi,HG,7,2,1,10,KinSourcesPost2016
+Tlingit,HG,103,5,5,113,KinSourcesPost2016
+Savanna    Pumé    ,HG,305,126,85,516,Walker    et    al.    2013    
+Anuta    ,Horticultural,374,69,17,460,KinSources    
+Arara    ,Horticultural,14,15,8,37,KinSources    
+Arawete    ,Horticultural,245,65,83,393,KinSources    
+Candoshi    ,Horticultural,1106,413,149,1668,KinSources    
+Chuukese    ,Horticultural,1086,177,221,1484,KinSources    
+Guahibo    ,Horticultural,57,8,0,65,KinSources    
+Makuna    ,Horticultural,194,61,30,285,KinSources    
+Manus    ,Horticultural,1462,319,239,2020,KinSources    
+Parakanã    ,Horticultural,133,85,26,244,KinSources    
+Suruí    ,Horticultural,498,379,120,997,KinSources    
+Tikopia    ,Horticultural,47,6,4,57,KinSources    
+Torres    Strait    ,Horticultural,252,94,8,354,KinSources    
+Trio    ,Horticultural,229,126,154,509,KinSources    
+Waimiri-­?Atroari    ,Horticultural,104,56,52,212,KinSources    
+Warao    ,Horticultural,1926,743,433,3102,KinSources    
+Baruya,Horticultural,7011,3810,773,11594,KinSourcesPost2016
+Barí    ,Horticultural,188,103,51,342,Walker    et    al.    2013    
+Chácobo    ,Horticultural,841,338,174,1353,Walker    et    al.    2013    
+Karitiana    ,Horticultural,39,37,10,86,Walker    et    al.    2013    
+Katukina    ,Horticultural,16,6,9,31,Walker    et    al.    2013    
+Krahô    ,Horticultural,77,17,24,118,Walker    et    al.    2013    
+Machiguenga    ,Horticultural,27,0,0,27,Walker    et    al.    2013    
+Marubo    ,Horticultural,24,28,4,56,Walker    et    al.    2013    
+Mayangna    ,Horticultural,183,61,82,326,Walker    et    al.    2013    
+Panare    ,Horticultural,8,8,0,16,Walker    et    al.    2013    
+Pemon    ,Horticultural,6,8,0,14,Walker    et    al.    2013    
+River    Pumé    ,Horticultural,194,2,48,244,Walker    et    al.    2013    
+Shuar    ,Horticultural,1186,203,196,1585,Walker    et    al.    2013    
+Suyá    ,Horticultural,52,18,8,78,Walker    et    al.    2013    
+Tsimané    ,Horticultural,3114,583,503,4200,Walker    et    al.    2013    
+Wari'    ,Horticultural,56,26,12,94,Walker    et    al.    2013    
+Xavante    ,Horticultural,46,37,9,92,Walker    et    al.    2013    
+Yanomamo    ,Horticultural,230,205,107,542,Walker    et    al.    2013    
+Ye'cuana    ,Horticultural,33,20,26,79,Walker    et    al.    2013    
+Tuareg    Kel    Kummer    ,Pastoral,1479,722,694,2895,KinSources    
+Tuareg    Udalen    ,Pastoral,276,123,159,558,KinSources    
+Turks    ,Pastoral,905,126,49,1080,KinSources    
+Duu Rea,Pastoral,3650,1374,252,5276,KinSourcesPost2016
+Kel Owey,Pastoral,11180,4510,974,16664,KinSourcesPost2016
+Samburu,Pastoral,607,749,0,1356,KinSourcesPost2016
+Todas,Pastoral,1621,324,433,2378,KinSourcesPost2016

@@ -1,0 +1,35 @@
+Code,Species,Common,Full,PatHalf,MatHalf,PropFull,Cat,Litter,SocialMonogamy
+Ag,Arctocephalus gazella,Antarctic fur seal,9,238,63,2.9,Plural,Monotocous,N
+Cl,Canis lupus,Grey wolf,542,348,284,46.2,Singular,Polytocous,Y
+Cs,Canis simensis,Ethiopian wolf,78,12,12,76.5,Singular,Polytocous,Y
+Cf,Castor fiber,Eurasian beaver,371,41,97,72.9,Singular,Polytocous,Y
+Cc,Cebus capucinus,White-faced capuchin,75,689,123,8.5,Plural,Monotocous,N
+Cp,Chlorocebus pygerythrus,Vervet monkey,10,173,64,4,Plural,Monotocous,N
+Cc,Crocuta crocuta,Spotted hyena,12,53,35,12,Plural,Polytocous,N
+Db,Diceros bicornis,Black rhinoceros,12,33,9,22.2,Singular,Monotocous,N
+Fc,Felix catus,Feral cat,32,99,66,16.2,Singular,Polytocous,N
+Fd,Fukomys damarensis,Damaraland mole rat,3154,0,813,79.5,Singular,Polytocous,Y
+Gb,Gorilla beringei,Mountain gorilla,43,555,101,6.2,Plural,Monotocous,N
+Hl,Hylobates lar,Lar gibbon,33,3,16,63.5,Singular,Monotocous,Y
+Lp,Lycaon pictus,African wild dog,68,0,12,85,Singular,Polytocous,Y
+Mf,Macaca fascicularis,Long-tailed macaque,17,62,15,18.1,Plural,Monotocous,N
+Mf,Macaca fuscata,Japanese macaque,2,74,12,2.3,Plural,Monotocous,N
+Mm,Macaca mulatta,Rhesus Macaque,0.138,9.887,2.62,1.1,Plural,Monotocous,N
+Mn,Macaca nigra,Celebes crested macaque,2,219,15,0.8,Plural,Monotocous,N
+Mm,Meles meles,European badger,147,370,234,19.6,Plural,Polytocous,N
+Mm,Mungos mungo,Banded mongoose,3595,9003,9994,15.9,Plural,Polytocous,N
+Nn,Nasua nasua,Ringtailed coati,105,656,71,12.6,Plural,Polytocous,N
+Oo,Orcinus orca,Killer whale,15,400,45,3.3,Plural,Monotocous,N
+Oa,Ovis aries,Soay sheep,146,11496,12611,0.6,Plural,Monotocous,N
+Pp,Pan paniscus,Bonobo,0,18,0,0,Plural,Monotocous,N
+Pt,Pan troglodytes,Common chimpanzee,14,236,94,4.1,Plural,Monotocous,N
+Pl,Panthera leo,African lion,15,48,18,18.5,Plural,Polytocous,N
+Pc,Papio cynocephalus,Savannah baboon,31,551,262,3.7,Plural,Monotocous,N
+Ph,Papio hamadryas anubis,Olive baboons,4,50,30,4.8,Plural,Monotocous,N
+Pc,Peromyscus californicus,California deermouse,82,0,0,100,Singular,Polytocous,Y
+Pp,Petrogale penicillata,Rock wallaby,37,182,40,14.3,Singular,Monotocous,N
+Sm,Saguinus mystax,Moustached Tamarin,59,8,9,77.6,Singular,Polytocous,Y
+Ss,Suricata suricatta,Meerkat,59.9,6.3,33.8,59.9,Singular,Polytocous,Y
+Tt,Tursiops truncatus,Bottlenose dolphin,2,33,14,4.1,Plural,Monotocous,N
+Ua,Ursus americanus,Black bear,2,50,26,2.6,Singular,Polytocous,N
+Vv,Vulpes vulpes,Red fox,75,39,52,45.2,Singular,Polytocous,Y
