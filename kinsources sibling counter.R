@@ -1,0 +1,41 @@
+### ### ### ### 
+### Code for establishing sibling numbers from human ethnographic data 
+### associated with paper on "Human monogamy in mammalian context
+### ### ### ### 
+
+require(stringr)
+
+## Deposit .csv datasets in a folder containing only these files and set working directory to that folder 
+
+items <- list.files() # List of the datasets
+n_inds = full_sibs = pat_half = mat_half = rep(NA,length(items)) # empty vectors to store information in
+for(z in 1:length(items)){ # loop through each dataset
+item = items[z] # pull out the name of the current dataset 
+dataset <- read.csv(item) # import that dataset 
+
+dataset = dataset[which(dataset$Children!=""),] # look at rows containing info about offspring
+ID = Father = Mother = integer() # zero length vectors to add info to 
+for(i in 1:nrow(dataset)){ # go through all rows of dataset
+  n_kids = str_count(dataset$Children[i], ";")+1 # count number of offspring listed in row
+  ID = c(ID,str_split_fixed(dataset$Children[i], ";",n_kids)) # get a list of the offspring 
+  Father = c(Father,rep(dataset$FatherId[i],times=n_kids)) # record the father of each offspring 
+  Mother = c(Mother,rep(dataset$MotherId[i],times=n_kids)) # record the mother of each offspring 
+}
+n_inds[z] = length(ID) # note the number of offspring included in the dataset
+include = which(Father!="0" & Mother!="0");ID = ID[include]; Father = Father[include]; Mother = Mother[include] # include offspring with known parents (unkown is given as '0' in these datasets)
+Full = PatH = MatH = 0 # counters for sibling numbers 
+for(i in 1:length(ID)){ # iterate through each sibling dyad and count up siblings
+  for(j in 1:length(ID)){
+   if(i!=j){
+    if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+    if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+    if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+   }
+  }
+}
+full_sibs[z] = Full/2 # divide by two as all dyads get counted twice in the above (computationally inefficient but simple)
+pat_half[z] = PatH/2
+mat_half[z] = MatH/2
+}
+meta_data = cbind.data.frame(items,n_inds,full_sibs,pat_half,mat_half) # summary dataset
+meta_data # take a look
