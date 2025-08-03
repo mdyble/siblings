@@ -4,6 +4,6 @@ The two main datasets are those containing data on the observed number of full s
 
 The code required to reproduce the main results/figures of the paper are 'Figure 1' and 'Figure 2'. The latter contains the model to predict sibling proportions. The additional code ('EPP model robustness  figure') is for parameter exploration for that model. 
 
-In addition to the above, there are three pieces of 'counter' code that can calculate the number and composition of sibling dyads based on raw parentage data, as housed in the folders 'aDNA', 'kinsources', and 'mammals'.
+In addition to the above, there are four pieces of 'counter' code that can calculate sibling dyads and reproductive exclusivity based on raw parentage data, as housed in the folders 'aDNA', 'kinsources', and 'mammals'.
 
 Data from any additional species or human populations gratefully received! Contact: Mark Dyble, md479@cam.ac.uk 
