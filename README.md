@@ -6,4 +6,4 @@ The code required to reproduce the main results/figures of the paper are 'Figure
 
 In addition to the above, there are four pieces of 'counter' code that can calculate sibling dyads and reproductive exclusivity based on raw parentage data, as housed in the folders 'aDNA', 'kinsources', and 'mammals'.
 
-Data from any additional species or human populations gratefully received! Contact: Mark Dyble, md479@cam.ac.uk 
+Data from any additional species or human populations gratefully received! Contact: [removed during peer review!]
