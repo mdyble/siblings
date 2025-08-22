@@ -5,10 +5,6 @@
 
 ## Set working directory to folder containing human.data and nonhuman.data files
 
-#setwd("C:/Users/md479/OneDrive - University of Cambridge/RESEARCH/Sibling Props paper")
-setwd("~/Library/CloudStorage/OneDrive-UniversityofCambridge/RESEARCH/Sibling Props paper")
-
-
 ## Figure 2a
 
 set.seed(1) # set seed
