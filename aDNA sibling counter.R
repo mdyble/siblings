@@ -7,9 +7,6 @@ require(stringr)
 
 ## Deposit the aDNA csv datasets in a folder containing only these files and set working directory to that folder 
 
-setwd("~/Library/CloudStorage/OneDrive-UniversityofCambridge/RESEARCH/Sibling Props paper/Human data/aDNA csv peds")
-#setwd("C:/Users/md479/OneDrive - University of Cambridge/RESEARCH/Sibling Props paper/Human data/aDNA csv peds")
-
 items <- list.files() # List of the datasets
 n_inds = full_sibs = pat_half = mat_half = rep(NA,length(items)) # empty vectors to store information in
 
