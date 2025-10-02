@@ -33,7 +33,6 @@ Chenchu    ,HG,253,83,57,393,KinSources
 Copper    ,HG,86,1,4,91,KinSources    
 Dogrib    ,HG,109,5,9,123,KinSources    
 Eyak    ,HG,41,11,14,66,KinSources    
-Hare    ,HG,13,0,0,13,KinSources    
 Iglulik    ,HG,188,81,60,329,KinSources    
 Kutchin    ,HG,17,2,0,19,KinSources    
 Labrador    ,HG,39,24,1,64,KinSources    
@@ -61,9 +60,8 @@ Murriny-Patha,HG,46,23,3,72,KinSourcesPost2016
 Nucoorilma (Tingha),HG,1613,94,49,1756,KinSourcesPost2016
 Nunivak,HG,806,211,199,1216,KinSourcesPost2016
 Sarmi,HG,229,170,36,435,KinSourcesPost2016
-Tiwi,HG,7,2,1,10,KinSourcesPost2016
 Tlingit,HG,103,5,5,113,KinSourcesPost2016
-Savanna    PumÈ    ,HG,305,126,85,516,Walker    et    al.    2013    
+Savanna    Pum√©    ,HG,305,126,85,516,Walker    et    al.    2013    
 Anuta    ,Horticultural,374,69,17,460,KinSources    
 Arara    ,Horticultural,14,15,8,37,KinSources    
 Arawete    ,Horticultural,245,65,83,393,KinSources    
@@ -72,28 +70,27 @@ Chuukese    ,Horticultural,1086,177,221,1484,KinSources
 Guahibo    ,Horticultural,57,8,0,65,KinSources    
 Makuna    ,Horticultural,194,61,30,285,KinSources    
 Manus    ,Horticultural,1462,319,239,2020,KinSources    
-Parakan„    ,Horticultural,133,85,26,244,KinSources    
-SuruÌ    ,Horticultural,498,379,120,997,KinSources    
+Parakan√£    ,Horticultural,133,85,26,244,KinSources    
+Suru√≠    ,Horticultural,498,379,120,997,KinSources    
 Tikopia    ,Horticultural,47,6,4,57,KinSources    
 Torres    Strait    ,Horticultural,252,94,8,354,KinSources    
 Trio    ,Horticultural,229,126,154,509,KinSources    
-Waimiri-≠?Atroari    ,Horticultural,104,56,52,212,KinSources    
+Waimiri-¬≠?Atroari    ,Horticultural,104,56,52,212,KinSources    
 Warao    ,Horticultural,1926,743,433,3102,KinSources    
 Baruya,Horticultural,7011,3810,773,11594,KinSourcesPost2016
-BarÌ    ,Horticultural,188,103,51,342,Walker    et    al.    2013    
-Ch·cobo    ,Horticultural,841,338,174,1353,Walker    et    al.    2013    
+Bar√≠    ,Horticultural,188,103,51,342,Walker    et    al.    2013    
+Ch√°cobo    ,Horticultural,841,338,174,1353,Walker    et    al.    2013    
 Karitiana    ,Horticultural,39,37,10,86,Walker    et    al.    2013    
 Katukina    ,Horticultural,16,6,9,31,Walker    et    al.    2013    
-KrahÙ    ,Horticultural,77,17,24,118,Walker    et    al.    2013    
+Krah√¥    ,Horticultural,77,17,24,118,Walker    et    al.    2013    
 Machiguenga    ,Horticultural,27,0,0,27,Walker    et    al.    2013    
 Marubo    ,Horticultural,24,28,4,56,Walker    et    al.    2013    
 Mayangna    ,Horticultural,183,61,82,326,Walker    et    al.    2013    
 Panare    ,Horticultural,8,8,0,16,Walker    et    al.    2013    
-Pemon    ,Horticultural,6,8,0,14,Walker    et    al.    2013    
-River    PumÈ    ,Horticultural,194,2,48,244,Walker    et    al.    2013    
+River    Pum√©    ,Horticultural,194,2,48,244,Walker    et    al.    2013    
 Shuar    ,Horticultural,1186,203,196,1585,Walker    et    al.    2013    
-Suy·    ,Horticultural,52,18,8,78,Walker    et    al.    2013    
-TsimanÈ    ,Horticultural,3114,583,503,4200,Walker    et    al.    2013    
+Suy√°    ,Horticultural,52,18,8,78,Walker    et    al.    2013    
+Tsiman√©    ,Horticultural,3114,583,503,4200,Walker    et    al.    2013    
 Wari'    ,Horticultural,56,26,12,94,Walker    et    al.    2013    
 Xavante    ,Horticultural,46,37,9,92,Walker    et    al.    2013    
 Yanomamo    ,Horticultural,230,205,107,542,Walker    et    al.    2013    
@@ -104,4 +101,5 @@ Turks    ,Pastoral,905,126,49,1080,KinSources
 Duu Rea,Pastoral,3650,1374,252,5276,KinSourcesPost2016
 Kel Owey,Pastoral,11180,4510,974,16664,KinSourcesPost2016
 Samburu,Pastoral,607,749,0,1356,KinSourcesPost2016
+
 Todas,Pastoral,1621,324,433,2378,KinSourcesPost2016
