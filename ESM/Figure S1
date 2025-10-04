@@ -1,0 +1,309 @@
+
+### ### ### 
+###  Code to simulate consequences of EPP, Figure S1
+### ### ### 
+
+### pedigree code humans
+require(stringr)
+
+# import nonhuman data csv file
+# set working directory to file with human pedigree data 
+# will take 5-10mins to run on standard laptop
+
+
+## ## ## ## 
+## With EPP = 0
+## ## ## ## 
+
+items <- list.files()
+set.seed(1)
+EPP_extra_rate = 0
+n_inds = miss_fath = miss_moth = full_sibs = pat_half = mat_half = rep(NA,length(items))
+for(z in 1:length(items)){
+  item = items[z]
+  families <- read.csv(item)
+  families = families[which(families$Children!=""),]
+  
+  ID = Father = Mother = integer()
+  
+  for(i in 1:nrow(families)){
+    n_kids = str_count(families$Children[i], ";")+1
+    
+    ID = c(ID,str_split_fixed(families$Children[i], ";",n_kids))
+    Father = c(Father,rep(families$FatherId[i],times=n_kids))
+    Mother = c(Mother,rep(families$MotherId[i],times=n_kids))
+  }
+  
+  n_inds[z] = length(ID)
+  miss_fath[z] = length(which(Father=="0"))
+  miss_moth[z] = length(which(Mother=="0"))
+  
+  include = which(Father!="0" & Mother!="0")
+  
+  ID = ID[include]
+  Father = Father[include]
+  Mother = Mother[include]
+  
+  ### Add the extra EPP
+  shuffle = which(sample(c(0,1),length(ID),prob = c((1-EPP_extra_rate),EPP_extra_rate),replace = T)==1)
+  poss_fathers = unique(Father)
+  Father[shuffle] = sample(poss_fathers,length(shuffle),replace = T)
+  Full = PatH = MatH = 0
+  for(i in 1:length(ID)){
+    for(j in 1:length(ID)){
+      if(i!=j){
+        if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+        if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+        if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+      }
+    }
+  }
+  full_sibs[z] = Full/2
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+  print(z)
+}
+
+meta_data_EPP0 = cbind.data.frame(
+  items,
+  n_inds,
+  miss_fath,
+  miss_moth,
+  full_sibs,
+  pat_half,
+  mat_half)
+
+
+
+
+
+## ## ## ## 
+## With EPP = 0.01
+## ## ## ## 
+
+items <- list.files()
+set.seed(1)
+EPP_extra_rate = 0.01
+n_inds = miss_fath = miss_moth = full_sibs = pat_half = mat_half = rep(NA,length(items))
+for(z in 1:length(items)){
+  item = items[z]
+  families <- read.csv(item)
+  families = families[which(families$Children!=""),]
+  
+  ID = Father = Mother = integer()
+  
+  for(i in 1:nrow(families)){
+    n_kids = str_count(families$Children[i], ";")+1
+    
+    ID = c(ID,str_split_fixed(families$Children[i], ";",n_kids))
+    Father = c(Father,rep(families$FatherId[i],times=n_kids))
+    Mother = c(Mother,rep(families$MotherId[i],times=n_kids))
+  }
+  
+  n_inds[z] = length(ID)
+  miss_fath[z] = length(which(Father=="0"))
+  miss_moth[z] = length(which(Mother=="0"))
+  
+  include = which(Father!="0" & Mother!="0")
+  
+  ID = ID[include]
+  Father = Father[include]
+  Mother = Mother[include]
+  
+  ### Add the extra EPP
+  shuffle = which(sample(c(0,1),length(ID),prob = c((1-EPP_extra_rate),EPP_extra_rate),replace = T)==1)
+  poss_fathers = unique(Father)
+  Father[shuffle] = sample(poss_fathers,length(shuffle),replace = T)
+  Full = PatH = MatH = 0
+  for(i in 1:length(ID)){
+    for(j in 1:length(ID)){
+      if(i!=j){
+      if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+      if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+      if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+    }
+    }
+  }
+  full_sibs[z] = Full/2
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+  print(z)
+}
+
+meta_data_EPP0.01 = cbind.data.frame(
+  items,
+  n_inds,
+  miss_fath,
+  miss_moth,
+  full_sibs,
+  pat_half,
+  mat_half)
+
+
+## ## ## ## ## 
+## With EPP = 0.03
+## ## ## ## ## 
+
+items <- list.files()
+set.seed(1)
+EPP_extra_rate = 0.03
+n_inds = miss_fath = miss_moth = full_sibs = pat_half = mat_half = rep(NA,length(items))
+for(z in 1:length(items)){
+  item = items[z]
+  families <- read.csv(item)
+  families = families[which(families$Children!=""),]
+  
+  ID = Father = Mother = integer()
+  
+  for(i in 1:nrow(families)){
+    n_kids = str_count(families$Children[i], ";")+1
+    
+    ID = c(ID,str_split_fixed(families$Children[i], ";",n_kids))
+    Father = c(Father,rep(families$FatherId[i],times=n_kids))
+    Mother = c(Mother,rep(families$MotherId[i],times=n_kids))
+  }
+  
+  n_inds[z] = length(ID)
+  miss_fath[z] = length(which(Father=="0"))
+  miss_moth[z] = length(which(Mother=="0"))
+  
+  include = which(Father!="0" & Mother!="0")
+  
+  ID = ID[include]
+  Father = Father[include]
+  Mother = Mother[include]
+  
+  ### Add the extra EPP
+  shuffle = which(sample(c(0,1),length(ID),prob = c((1-EPP_extra_rate),EPP_extra_rate),replace = T)==1)
+  poss_fathers = unique(Father)
+  Father[shuffle] = sample(poss_fathers,length(shuffle),replace = T)
+  Full = PatH = MatH = 0
+  for(i in 1:length(ID)){
+    for(j in 1:length(ID)){
+      if(i!=j){
+        if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+        if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+        if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+      }
+    }
+  }
+  full_sibs[z] = Full/2
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+  print(z)
+}
+
+meta_data_EPP0.03 = cbind.data.frame(
+  items,
+  n_inds,
+  miss_fath,
+  miss_moth,
+  full_sibs,
+  pat_half,
+  mat_half)
+
+
+
+## ## ## ## ## 
+## With EPP = 0.10
+## ## ## ## ## 
+
+items <- list.files()
+set.seed(1)
+EPP_extra_rate = 0.1
+n_inds = miss_fath = miss_moth = full_sibs = pat_half = mat_half = rep(NA,length(items))
+for(z in 1:length(items)){
+  item = items[z]
+  families <- read.csv(item)
+  families = families[which(families$Children!=""),]
+  
+  ID = Father = Mother = integer()
+  
+  for(i in 1:nrow(families)){
+    n_kids = str_count(families$Children[i], ";")+1
+    
+    ID = c(ID,str_split_fixed(families$Children[i], ";",n_kids))
+    Father = c(Father,rep(families$FatherId[i],times=n_kids))
+    Mother = c(Mother,rep(families$MotherId[i],times=n_kids))
+  }
+  
+  n_inds[z] = length(ID)
+  miss_fath[z] = length(which(Father=="0"))
+  miss_moth[z] = length(which(Mother=="0"))
+  
+  include = which(Father!="0" & Mother!="0")
+  
+  ID = ID[include]
+  Father = Father[include]
+  Mother = Mother[include]
+  
+  ### Add the extra EPP
+  shuffle = which(sample(c(0,1),length(ID),prob = c((1-EPP_extra_rate),EPP_extra_rate),replace = T)==1)
+  poss_fathers = unique(Father)
+  Father[shuffle] = sample(poss_fathers,length(shuffle),replace = T)
+  Full = PatH = MatH = 0
+  for(i in 1:length(ID)){
+    for(j in 1:length(ID)){
+      if(i!=j){
+        if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+        if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+        if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+      }
+    }
+  }
+  full_sibs[z] = Full/2
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+  print(z)
+}
+
+meta_data_EPP0.1 = cbind.data.frame(
+  items,
+  n_inds,
+  miss_fath,
+  miss_moth,
+  full_sibs,
+  pat_half,
+  mat_half)
+
+
+
+#### #### #### 
+#### Make plot
+#### #### #### 
+
+### Simulated EPP analysis
+
+nonmonoanimals = nonhuman.data$PropFull[which(nonhuman.data$SocialMonogamy=="N")]
+
+
+pc0 <- meta_data_EPP0
+pc1 <- meta_data_EPP0.01
+pc3 <- meta_data_EPP0.03
+pc10 <- meta_data_EPP0.1
+
+zero = pc0$full_sibs/(pc0$full_sibs+pc0$pat_half+pc0$mat_half)*100
+one = pc1$full_sibs/(pc1$full_sibs+pc1$pat_half+pc1$mat_half)*100
+three = pc3$full_sibs/(pc3$full_sibs+pc3$pat_half+pc3$mat_half)*100
+ten = pc10$full_sibs/(pc10$full_sibs+pc10$pat_half+pc10$mat_half)*100
+mean(zero)
+mean(one)
+mean(three)
+mean(ten)
+
+labs = c("0% EPP","1% EPP","3% EPP","10% EPP","Non-monog")
+gaps = c(1,2,3,4,5.5)
+boxplot(zero,one,three,ten,nonmonoanimals,frame=F,
+        at = gaps,
+        ylab="% full siblings",
+        xaxt="n",
+        boxwex=.7,
+        ylim=c(0,100),col=c("grey90","grey90","grey90","grey90","orange"))
+
+axis(1, at = gaps, labels = FALSE)
+text(gaps, -20, labs, srt = 90, xpd = TRUE,cex=.9)
+
+### end ###
+
+
+
