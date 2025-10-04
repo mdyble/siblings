@@ -1,0 +1,254 @@
+########
+#### Checking robustness to alternative ways of handling missing data
+########
+
+# import non human data csv file
+# set working directory to file containing the human pedigree datasets
+# below takes ~5mins to run on typical laptop
+
+require(stringr)
+
+items <- list.files() # List of the datasets
+
+### ### ### ### 
+### #### Default scenario: Remove data with missing parent
+### #### ### #### 
+
+n_inds = full_sibs = pat_half = miss_mother = miss_father = mat_half = rep(NA,length(items)) # empty vectors to store information in
+
+father_no_other = father_with_other = mother_no_other = mother_with_other = 0
+
+for(z in 1:length(items)){ # loop through each dataset
+  item = items[z] # pull out the name of the current dataset 
+  dataset <- read.csv(item) # import that dataset 
+  
+  dataset = dataset[which(dataset$Children!=""),] # look at rows containing info about offspring
+  ID = Father = Mother = integer() # zero length vectors to add info to 
+  for(i in 1:nrow(dataset)){ # go through all rows of dataset
+    n_kids = str_count(dataset$Children[i], ";")+1 # count number of offspring listed in row
+    ID = c(ID,str_split_fixed(dataset$Children[i], ";",n_kids)) # get a list of the offspring 
+    Father = c(Father,rep(dataset$FatherId[i],times=n_kids)) # record the father of each offspring 
+    Mother = c(Mother,rep(dataset$MotherId[i],times=n_kids)) # record the mother of each offspring 
+  }
+  
+  miss_mother[z] = length(which(Father==0))
+  miss_father[z] = length(which(Mother==0))
+  
+  ## count how many of the 'single' parents have another reproductive partner
+  
+  missing_mothers = which(Mother==0)
+  for(i in 1:length(missing_mothers)){
+  x = Father[missing_mothers[i]]
+  temp = Mother[which(Father==x)]
+  temp = temp[which(temp!=0)]
+  if(length(temp)==0) father_no_other = father_no_other+1
+  if(length(temp)>0) father_with_other = father_with_other+1
+  }
+  
+  missing_fathers = which(Father==0)
+  for(i in 1:length(missing_fathers)){
+    x = Mother[missing_fathers[i]]
+    temp = Father[which(Mother==x)]
+    temp = temp[which(temp!=0)]
+    if(length(temp)==0) mother_no_other = mother_no_other+1
+    if(length(temp)>0) mother_with_other = mother_with_other+1
+  }
+  
+  n_inds[z] = length(ID) # note the number of offspring included in the dataset
+  include = which(Father!="0" & Mother!="0");ID = ID[include]; Father = Father[include]; Mother = Mother[include] # include offspring with known parents (unkown is given as '0' in these datasets)
+  
+  Full = PatH = MatH = 0 # counters for sibling numbers 
+  for(i in 1:length(ID)){ # iterate through each sibling dyad and count up siblings
+    for(j in 1:length(ID)){
+      if(i!=j){
+        if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+        if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+        if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+      }
+    }
+  }
+  full_sibs[z] = Full/2 # divide by two as all dyads get counted twice in the above (computationally inefficient but simple)
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+print(z)
+}
+
+meta_data_baseline = cbind.data.frame(items,n_inds,full_sibs,pat_half,mat_half,miss_mother,miss_father) # summary dataset
+meta_data_baseline # take a look
+
+mean(miss_mother/n_inds*100)
+mean(miss_father/n_inds*100)
+
+mean(meta_data_baseline$full_sibs/(meta_data_baseline$full_sibs+meta_data_baseline$pat_half+meta_data_baseline$mat_half))
+
+
+
+### ### ### ### 
+### #### Imputation scenario 1: Assume monogamy 
+### #### ### #### 
+
+require(stringr)
+
+## Deposit .csv datasets in a folder containing only these files and set working directory to that folder 
+
+n_inds = full_sibs = pat_half = miss_mother = miss_father = mat_half = rep(NA,length(items)) # empty vectors to store information in
+
+
+for(z in 1:length(items)){ # loop through each dataset
+  item = items[z] # pull out the name of the current dataset 
+  dataset <- read.csv(item) # import that dataset 
+  dataset = dataset[which(dataset$Children!=""),] # look at rows containing info about offspring
+  
+  ID = Father = Mother = integer() # zero length vectors to add info to 
+  for(i in 1:nrow(dataset)){ # go through all rows of dataset
+    n_kids = str_count(dataset$Children[i], ";")+1 # count number of offspring listed in row
+    ID = c(ID,str_split_fixed(dataset$Children[i], ";",n_kids)) # get a list of the offspring 
+    Father = c(Father,rep(dataset$FatherId[i],times=n_kids)) # record the father of each offspring 
+    Mother = c(Mother,rep(dataset$MotherId[i],times=n_kids)) # record the mother of each offspring 
+  }
+
+  n_inds[z] = length(ID) # note the number of offspring included in the dataset
+  
+  ### Impute missing 
+  father_missing = which(Father==0)
+  for(i in 1:length(father_missing)){
+    Father[father_missing[which(Mother[father_missing]==Mother[father_missing[i]])]] = 1000000+i
+  }
+  
+  mother_missing = which(Mother==0)
+  for(i in 1:length(mother_missing)){
+    Mother[mother_missing[which(Father[mother_missing]==Father[mother_missing[i]])]] = 2000000+i
+  }
+  
+  miss_mother[z] = length(which(Father==0))
+  miss_father[z] = length(which(Mother==0))
+  
+  ### remove those still missing a parent
+  include = which(Father!="0" & Mother!="0");ID = ID[include]; Father = Father[include]; Mother = Mother[include] # include offspring with known parents (unkown is given as '0' in these datasets)
+  
+  Full = PatH = MatH = 0 # counters for sibling numbers 
+  for(i in 1:length(ID)){ # iterate through each sibling dyad and count up siblings
+    for(j in 1:length(ID)){
+      if(i!=j){
+        if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+        if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+        if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+      }
+    }
+  }
+  full_sibs[z] = Full/2 # divide by two as all dyads get counted twice in the above (computationally inefficient but simple)
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+  print(z)
+  
+}
+
+meta_data_monog = cbind.data.frame(items,n_inds,full_sibs,pat_half,mat_half,miss_mother,miss_father) # summary dataset
+meta_data_monog # take a look
+
+mean(miss_mother/n_inds*100)
+mean(miss_father/n_inds*100)
+
+mean(meta_data_monog$full_sibs/(meta_data_monog$full_sibs+meta_data_monog$pat_half+meta_data_monog$mat_half))
+
+
+
+### ### ### ### 
+### #### Imputation scenario 2: give unique ID to each
+### #### ### #### 
+
+n_inds = full_sibs = pat_half = miss_mother = miss_father = mat_half = rep(NA,length(items)) # empty vectors to store information in
+
+
+for(z in 1:length(items)){ # loop through each dataset
+  item = items[z] # pull out the name of the current dataset 
+  dataset <- read.csv(item) # import that dataset 
+  
+  dataset = dataset[which(dataset$Children!=""),] # look at rows containing info about offspring
+  ID = Father = Mother = integer() # zero length vectors to add info to 
+  for(i in 1:nrow(dataset)){ # go through all rows of dataset
+    n_kids = str_count(dataset$Children[i], ";")+1 # count number of offspring listed in row
+    ID = c(ID,str_split_fixed(dataset$Children[i], ";",n_kids)) # get a list of the offspring 
+    Father = c(Father,rep(dataset$FatherId[i],times=n_kids)) # record the father of each offspring 
+    Mother = c(Mother,rep(dataset$MotherId[i],times=n_kids)) # record the mother of each offspring 
+  }
+  
+  n_inds[z] = length(ID) # note the number of offspring included in the dataset
+  
+  ### impute missing data, giving random other father
+  missing_fathers = which(Father==0)
+  
+  Father[which(Father==0)] = 10000:(10000+length(missing_fathers))
+  
+  missing_mothers = which(Mother==0)
+  
+  Mother[which(Mother==0)] = 20000:(20000+length(missing_mothers))
+  
+  miss_mother[z] = length(which(Father==0))
+  miss_father[z] = length(which(Mother==0))
+  
+  ### remove those still missing a parent
+  include = which(Father!="0" & Mother!="0");ID = ID[include]; Father = Father[include]; Mother = Mother[include] # include offspring with known parents (unkown is given as '0' in these datasets)
+  
+  Full = PatH = MatH = 0 # counters for sibling numbers 
+  for(i in 1:length(ID)){ # iterate through each sibling dyad and count up siblings
+    for(j in 1:length(ID)){
+      if(i!=j){
+        if(Mother[i]==Mother[j] & Father[i]==Father[j]) Full = Full + 1
+        if(Mother[i]==Mother[j] & Father[i]!=Father[j]) MatH = MatH + 1
+        if(Mother[i]!=Mother[j] & Father[i]==Father[j]) PatH = PatH + 1
+      }
+    }
+  }
+  full_sibs[z] = Full/2 # divide by two as all dyads get counted twice in the above (computationally inefficient but simple)
+  pat_half[z] = PatH/2
+  mat_half[z] = MatH/2
+  print(z)
+  
+}
+meta_data_unique = cbind.data.frame(items,n_inds,full_sibs,pat_half,mat_half,miss_mother,miss_father) # summary dataset
+meta_data_unique # take a look
+
+mean(miss_mother/n_inds*100)
+mean(miss_father/n_inds*100)
+
+mean(meta_data_unique$full_sibs/(meta_data_unique$full_sibs+meta_data_unique$pat_half+meta_data_unique$mat_half))
+(meta_data_unique$full_sibs/(meta_data_unique$full_sibs+meta_data_unique$pat_half+meta_data_unique$mat_half))
+
+
+#### summarise
+mean(meta_data_baseline$full_sibs/(meta_data_baseline$full_sibs + meta_data_baseline$pat_half + meta_data_baseline$mat_half))
+mean(meta_data_monog$full_sibs/(meta_data_monog$full_sibs + meta_data_monog$pat_half + meta_data_monog$mat_half))
+mean(meta_data_unique$full_sibs/(meta_data_unique$full_sibs + meta_data_unique$pat_half + meta_data_unique$mat_half))
+
+non_monog = nonhuman.data[which(nonhuman.data$SocialMonogamy=="N"),]
+
+
+
+father_no_other  # n men listed as a father with the mother missing who have no other partner
+father_with_other # n men listed as a father with the mother missing who have other partner
+mother_no_other # n women listed as a mother with the father missing who have no other partner
+mother_with_other # n women listed as a mother with the father missing who have other partner
+
+(mother_no_other+father_no_other)/(father_no_other + father_with_other + mother_no_other + mother_with_other)
+
+mean(meta_data_baseline$miss_mother/meta_data_baseline$n_inds)*100
+mean(meta_data_baseline$miss_father/meta_data_baseline$n_inds)*100
+
+
+
+## boxplot
+a=(meta_data_baseline$full_sibs/(meta_data_baseline$full_sibs + meta_data_baseline$pat_half + meta_data_baseline$mat_half))*100
+b=(meta_data_monog$full_sibs/(meta_data_monog$full_sibs + meta_data_monog$pat_half + meta_data_monog$mat_half))*100
+c=(meta_data_unique$full_sibs/(meta_data_unique$full_sibs + meta_data_unique$pat_half + meta_data_unique$mat_half))*100
+d = non_monog$Full/(non_monog$Full + non_monog$PatHalf + non_monog$MatHalf)*100
+
+boxplot(a,b,c,d,
+        frame=F,
+        ylab="Percentage full sibs",
+        whisklty=1,
+        boxwex=.7,
+        ylim=c(0,100),col=c("grey90","grey90","grey90","orange"))
+
+labs = c("Exclude","Monogamy","Random mating","Non-monog mammals")
+text(c(1,2,3,4), -10, labs, srt = 0, xpd = TRUE,cex=.9)
